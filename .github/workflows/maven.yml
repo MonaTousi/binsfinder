@@ -13,10 +13,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
-        
         with:
-         java-version: 1.8
-        
+          java-version: 1.8
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       - name: Build and push Docker image
@@ -26,4 +24,6 @@ jobs:
           registry: docker.io
           username: '${{ secrets.DOCKER_USERNAME }}'
           password: '${{ secrets.DOCKER_PASSWORD }}'
-      
+          context: '{{defaultContext}}'
+          push: true
+          tags: latest
